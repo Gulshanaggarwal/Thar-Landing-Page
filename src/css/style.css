@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+li {
+  list-style: none;
+}
+@font-face {
+  font-family: "nasalization";
+  src: url(../fonts/nasalization.otf) format("opentype");
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    linear-gradient(
+      60deg,
+      rgba(5, 7, 34, 1) 20%,
+      rgba(38, 33, 67, 1) 54%,
+      rgba(137, 60, 91, 1) 77%,
+      rgba(155, 129, 71, 1) 100%
+    );
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+}
+.threeContainer {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1;
+}
+#threeCanvas {
+  height: 100vh;
+  width: 100%;
+}
+#home {
+  position: relative;
+  min-height: 100vh;
+  width: 90%;
+  margin: auto;
+}
+#home header {
+  position: fixed;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#home header .socialContainer ul {
+  display: flex;
+  gap: 2rem;
+}
+#home header .socialContainer ul img {
+  height: 3rem;
+}
+
+#home .cta {
+  min-height: 100vh;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  /* grid-template-areas: "heading heading navigation"; */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  justify-items: center;
+}
+#home .cta .headingContainer {
+  grid-area: heading;
+  /* justify-self: end; */
+  grid-column: 2/3;
+  grid-row: 1;
+}
+#home .cta .navigationContainer {
+  grid-area: navigation;
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+}
+#home .cta .underline {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}
+#home .cta .underline::before {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 1px;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  transform: rotate(125deg);
+  background-color: white;
+}
+
+#home .cta .headingContainer .headings {
+  text-align: center;
+  font-size: 0.75rem;
+}
+#home .cta .headingContainer .headings h1 {
+  font-size: 8rem;
+  font-weight: 300;
+  font-family: nasalization;
+  line-height: 80%;
+}
