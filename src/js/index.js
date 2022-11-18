@@ -4,7 +4,6 @@ import {
   PerspectiveCamera,
   WebGLRenderer,
   PointLight,
-  GridHelper,
   MeshPhongMaterial,
   SphereGeometry,
   Mesh,
@@ -13,7 +12,6 @@ import {
   MathUtils,
   MeshBasicMaterial,
   OrthographicCamera,
-  StaticReadUsage,
 } from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import imageMarsColor from "../assets/marsColor.jpg";
@@ -51,26 +49,21 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(canvasContainer.clientWidth, canvasContainer.clientHeight);
 renderer.setClearColor(0x000000, 0);
 // -----------objects----------------
-//geometry
-const planet = new SphereGeometry(3, 50, 50);
-
-//material
-const texture = new MeshPhongMaterial({
-  color: 0xffffff,
-});
-texture.map = new TextureLoader().load(imageMarsColor);
-texture.bumpMap = new TextureLoader().load(imageMarsTexture);
-texture.specularMap = new TextureLoader().load(imageMarsTexture);
-texture.specular = new Color("gray");
-texture.bumpScale = 1;
-texture.displacementMap = new TextureLoader().load(imageMarsTexture);
-texture.displacementScale = 01;
 
 //mesh
-const mars = new Mesh(planet, texture);
-planet.scale(1.5, 1.5, 1.5);
-mars.position.x = 0;
-// planet.scale(0.5, 0.5, 0.5);
+const mars = new Mesh(
+  new SphereGeometry(Math.max(canvasContainer.clientWidth * 0.004, 4), 50, 50),
+  new MeshPhongMaterial({
+    color: 0xffffff,
+    map: new TextureLoader().load(imageMarsColor),
+    bumpMap: new TextureLoader().load(imageMarsTexture),
+    bumpScale: 1,
+    specularMap: new TextureLoader().load(imageMarsTexture),
+    specular: new Color("gray"),
+    displacementMap: new TextureLoader().load(imageMarsTexture),
+    displacementScale: 1,
+  })
+);
 
 //stars
 
@@ -102,19 +95,19 @@ for (let i = 1; i < 500; i++) {
 function animate() {
   requestAnimationFrame(animate);
   mars.rotation.y -= 0.005;
-
   renderer.render(scene, orthoCamera);
 }
 animate();
 
 function animateMars() {
-  let zoom = 1;
-  while (zoom >= 2) {
-    planet.scale(zoom, zoom, zoom);
-    zoom += 0.001;
-  }
-  console.log("HE");
+  let height = canvasContainer.clientHeight / 2;
+  // mars.position.lerp(targetPosition, smoothness);
+  let num = requestAnimationFrame(animateMars);
+  mars.translateY(0.05);
+  console.log(num);
+  cancelAnimationFrame(height);
 }
-// document
-//   .querySelector(".navigationContainer")
-//   .addEventListener("click", animateMars);
+
+document
+  .querySelector(".navigationContainer")
+  .addEventListener("click", animateMars);
