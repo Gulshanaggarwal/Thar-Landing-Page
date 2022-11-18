@@ -40,6 +40,8 @@ const orthoCamera = new OrthographicCamera(
   1000
 );
 
+const isLandscape = window.innerWidth > window.innerHeight ? true : false;
+
 //renderer
 const renderer = new WebGLRenderer({
   canvas: document.getElementById("threeCanvas"),
@@ -53,7 +55,7 @@ renderer.setClearColor(0x000000, 0);
 
 //mesh
 const mars = new Mesh(
-  new SphereGeometry(Math.max(window.innerWidth * 0.35, 500), 25, 25),
+  new SphereGeometry(isLandscape ? window.innerWidth * 0.32 : 600, 100, 100),
   new MeshPhongMaterial({
     // wireframe: true,
     color: 0xffffff,
@@ -70,7 +72,7 @@ const mars = new Mesh(
 //stars
 
 function addStar() {
-  const geometry = new SphereGeometry(0.02, 24, 24);
+  const geometry = new SphereGeometry(0.1, 24, 24);
   const material = new MeshBasicMaterial({
     color: 0xffffff,
   });
@@ -110,6 +112,8 @@ window.addEventListener("scroll", (e) => {
   // console.log(heightPercent + "%");
   // let marsAngle = mars;
   if (heightPercent <= 100) {
+    scene.rotation.z = -0.012 * heightPercent;
+
     orthoCamera.position.y = -1 * height * heightPercent * 0.007;
     // orthoCamera.position.y = ;
     pointLight.position.set(
@@ -118,7 +122,8 @@ window.addEventListener("scroll", (e) => {
       -3.5 * window.innerWidth
     );
 
-    orthoCamera.scale.x = 1 - 0.008 * heightPercent;
-    orthoCamera.scale.y = 1 - 0.008 * heightPercent;
+    orthoCamera.scale.x = 1 - 0.0085 * heightPercent;
+    orthoCamera.scale.y = 1 - 0.0085 * heightPercent;
+    // mars.geometry.bumpScale = 1000 * heightPercent;
   }
 });
