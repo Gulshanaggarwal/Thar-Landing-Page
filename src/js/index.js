@@ -12,6 +12,7 @@ import {
   MathUtils,
   MeshBasicMaterial,
   OrthographicCamera,
+  Vector3,
 } from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import imageMarsColor from "../assets/marsColor.jpg";
@@ -31,10 +32,10 @@ const camera = new PerspectiveCamera(
 camera.position.set(0, 20, 60);
 
 const orthoCamera = new OrthographicCamera(
-  canvasContainer.clientWidth / -85,
-  canvasContainer.clientWidth / 85,
-  canvasContainer.clientHeight / -85,
-  canvasContainer.clientHeight / 85,
+  canvasContainer.clientWidth * -1,
+  canvasContainer.clientWidth,
+  canvasContainer.clientHeight * -1,
+  canvasContainer.clientHeight,
   1,
   1000
 );
@@ -52,16 +53,17 @@ renderer.setClearColor(0x000000, 0);
 
 //mesh
 const mars = new Mesh(
-  new SphereGeometry(Math.max(canvasContainer.clientWidth * 0.004, 4), 50, 50),
+  new SphereGeometry(Math.max(window.innerWidth * 0.35, 500), 25, 25),
   new MeshPhongMaterial({
+    // wireframe: true,
     color: 0xffffff,
     map: new TextureLoader().load(imageMarsColor),
     bumpMap: new TextureLoader().load(imageMarsTexture),
-    bumpScale: 1,
+    bumpScale: 20,
     specularMap: new TextureLoader().load(imageMarsTexture),
     specular: new Color("gray"),
     displacementMap: new TextureLoader().load(imageMarsTexture),
-    displacementScale: 1,
+    displacementScale: 20,
   })
 );
 
@@ -83,7 +85,7 @@ function addStar() {
 }
 
 const pointLight = new PointLight(0xffffff);
-pointLight.position.set(50, 0, -50);
+pointLight.position.set(window.innerWidth * 0.5, 0, -3.5 * window.innerWidth);
 
 //scene
 scene.add(pointLight, mars);
@@ -99,15 +101,24 @@ function animate() {
 }
 animate();
 
-function animateMars() {
-  let height = canvasContainer.clientHeight / 2;
-  // mars.position.lerp(targetPosition, smoothness);
-  let num = requestAnimationFrame(animateMars);
-  mars.translateY(0.05);
-  console.log(num);
-  cancelAnimationFrame(height);
-}
+let camTop = orthoCamera.top;
+let camBottom = orthoCamera.bottom;
 
-document
-  .querySelector(".navigationContainer")
-  .addEventListener("click", animateMars);
+window.addEventListener("scroll", (e) => {
+  let height = document.body.getBoundingClientRect().y * -1;
+  let heightPercent = (height / window.innerHeight) * 100;
+  // console.log(heightPercent + "%");
+  // let marsAngle = mars;
+  if (heightPercent <= 100) {
+    orthoCamera.position.y = -1 * height * heightPercent * 0.007;
+    // orthoCamera.position.y = ;
+    pointLight.position.set(
+      window.innerWidth * 0.5,
+      -0.1 * height * heightPercent,
+      -3.5 * window.innerWidth
+    );
+
+    orthoCamera.scale.x = 1 - 0.008 * heightPercent;
+    orthoCamera.scale.y = 1 - 0.008 * heightPercent;
+  }
+});
