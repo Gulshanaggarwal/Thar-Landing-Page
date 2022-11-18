@@ -18,7 +18,7 @@ li {
 body {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     linear-gradient(
       60deg,
       rgba(5, 7, 34, 1) 20%,
@@ -26,6 +26,18 @@ body {
       rgba(137, 60, 91, 1) 77%,
       rgba(155, 129, 71, 1) 100%
     );
+  /* background: linear-gradient(rgba(0, 0, 0, 0.421), rgba(0, 0, 0, 0.5)),
+    linear-gradient(
+      60deg,
+      rgba(5, 7, 34, 1) 20%,
+      rgba(38, 33, 67, 1) 54%,
+      rgb(83, 7, 164) 77%,
+      rgb(125, 38, 218) 100%
+    ); */
+
+  /* background: #7d26da; */
+
+  /* background: url(); */
   width: 100%;
   min-height: 100vh;
   font-family: "Outfit", sans-serif;
@@ -75,17 +87,18 @@ body {
 
   justify-items: center;
 }
+
+#home .cta .navigationContainer {
+  grid-area: navigation;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}
 #home .cta .headingContainer {
   grid-area: heading;
   /* justify-self: end; */
-  grid-column: 2/3;
-  grid-row: 1;
-}
-#home .cta .navigationContainer {
-  grid-area: navigation;
   grid-column: 3;
   grid-row: 1;
-  justify-self: start;
 }
 #home .cta .underline {
   position: relative;
@@ -110,7 +123,7 @@ body {
   font-size: 0.75rem;
 }
 #home .cta .headingContainer .headings h1 {
-  font-size: 8rem;
+  font-size: 6rem;
   font-weight: 300;
   font-family: nasalization;
   line-height: 80%;
