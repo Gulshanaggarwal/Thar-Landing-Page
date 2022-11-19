@@ -1,32 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 * {
-  margin: 0;
-  padding: 0;
-  color: #ffffff;
+	margin: 0;
+	padding: 0;
+	color: #ffffff;
 }
 a {
-  text-decoration: none;
-  color: #ffffff;
+	text-decoration: none;
+	color: #ffffff;
 }
 li {
-  list-style: none;
+	list-style: none;
 }
 @font-face {
-  font-family: "nasalization";
-  src: url(../fonts/nasalization.otf) format("opentype");
+	font-family: "nasalization";
+	src: url(../fonts/nasalization.otf) format("opentype");
 }
 body {
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    linear-gradient(
-      60deg,
-      rgba(5, 7, 34, 1) 20%,
-      rgba(38, 33, 67, 1) 54%,
-      rgba(137, 60, 91, 1) 77%,
-      rgba(155, 129, 71, 1) 100%
-    );
-  /* background: linear-gradient(rgba(0, 0, 0, 0.421), rgba(0, 0, 0, 0.5)),
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		linear-gradient(
+			60deg,
+			rgba(5, 7, 34, 1) 20%,
+			rgba(38, 33, 67, 1) 54%,
+			rgba(137, 60, 91, 1) 77%,
+			rgba(155, 129, 71, 1) 100%
+		);
+	/* background: linear-gradient(rgba(0, 0, 0, 0.421), rgba(0, 0, 0, 0.5)),
     linear-gradient(
       60deg,
       rgba(5, 7, 34, 1) 20%,
@@ -35,98 +35,123 @@ body {
       rgb(125, 38, 218) 100%
     ); */
 
-  /* background: #7d26da; */
+	/* background: #7d26da; */
 
-  /* background: url(); */
-  width: 100%;
-  min-height: 100vh;
-  font-family: "Outfit", sans-serif;
+	/* background: url(); */
+	width: 100%;
+	min-height: 100vh;
+	font-family: "Outfit", sans-serif;
 }
 .threeContainer {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: -1;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+	z-index: -1;
 }
 #threeCanvas {
-  height: 100vh;
-  width: 100%;
+	height: 100vh;
+	width: 100%;
 }
 #home,
 #about {
-  position: relative;
-  min-height: 100vh;
-  width: 90%;
-  margin: auto;
+	position: relative;
+	min-height: 100vh;
+	width: 90%;
+	margin: auto;
 }
 #home header {
-  position: fixed;
-  width: 90%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	position: fixed;
+	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 #home header .socialContainer ul {
-  display: flex;
-  gap: 2rem;
+	display: flex;
+	gap: 2rem;
 }
 #home header .socialContainer ul img {
-  height: 3rem;
+	height: 3rem;
 }
 
 #home .cta {
-  min-height: 100vh;
-  width: 100%;
-  display: grid;
-  align-items: center;
-  /* grid-template-areas: "heading heading navigation"; */
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+	min-height: 100vh;
+	width: 100%;
+	display: grid;
+	align-items: center;
+	/* grid-template-areas: "heading heading navigation"; */
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr;
 
-  justify-items: center;
+	justify-items: center;
 }
 
 #home .cta .navigationContainer {
-  grid-area: navigation;
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: start;
+	grid-area: navigation;
+	grid-column: 1;
+	grid-row: 1;
+	justify-self: start;
 }
 #home .cta .headingContainer {
-  grid-area: heading;
-  /* justify-self: end; */
-  grid-column: 3;
-  grid-row: 1;
+	grid-area: heading;
+	/* justify-self: end; */
+	grid-column: 3;
+	grid-row: 1;
 }
 #home .cta .underline {
-  position: relative;
-  width: 100%;
-  height: 1px;
-  background-color: #fff;
+	position: relative;
+	width: 100%;
+	height: 1px;
+	background-color: #fff;
 }
 #home .cta .underline::before {
-  content: "";
-  position: absolute;
-  width: 30%;
-  height: 1px;
-  top: 0;
-  left: 0;
-  transform-origin: left;
-  transform: rotate(125deg);
-  background-color: white;
+	content: "";
+	position: absolute;
+	width: 30%;
+	height: 1px;
+	top: 0;
+	left: 0;
+	transform-origin: left;
+	transform: rotate(125deg);
+	background-color: white;
 }
 
 #home .cta .headingContainer .headings {
-  text-align: center;
-  font-size: 0.75rem;
+	text-align: center;
+	font-size: 0.75rem;
 }
 #home .cta .headingContainer .headings h1 {
-  font-size: 6rem;
-  font-weight: 300;
-  font-family: nasalization;
-  line-height: 80%;
+	font-size: 6rem;
+	font-weight: 300;
+	font-family: nasalization;
+	line-height: 80%;
 }
+
+#home .cta .navigationContainer ul li {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	gap: 20px;
+	margin: 20px 0;
+}
+
+#home .cta .navigationContainer .iconWrapper {
+	border: 3px solid #02f0ff;
+	border-radius: 10px;
+	transform: rotate(-45deg);
+	width: 30px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#home .cta .navigationContainer .iconWrapper img {
+	transform: rotate(45deg);
+	width: 24px;
+	height: 24px;
+}
+
 /* ---------about------------ */
